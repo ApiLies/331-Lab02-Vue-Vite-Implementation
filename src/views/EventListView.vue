@@ -3,13 +3,12 @@ import EventCard from '@/components/EventCard.vue'
 //import CategoriesCard from '@/components/CategoriesCard.vue'
 import type { Event } from '@/types'
 import { ref, onMounted } from 'vue'
-import axios from 'axios'
+import EventService from '@/services/EventService'
 
 const events = ref<Event[]>()
 
 onMounted(() => {
-  axios
-    .get('http://localhost:3000/events')
+  EventService.getEvents()
     .then((response) => {
       //console.log(response.data)
       events.value = response.data
