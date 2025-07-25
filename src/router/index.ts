@@ -29,6 +29,15 @@ const router = createRouter({
       name: 'students',
       component: StudentListView,
     },
+    {
+      path: '/',
+      name: 'event-list-view',
+      component: EventListView,
+      props: (route) => ({
+        page: parseInt(route.query.page as string) || 1,
+        size: parseInt(route.query.size as string) || 2,
+      }),
+    },
   ],
 })
 
