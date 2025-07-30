@@ -41,7 +41,6 @@ const hasNextPage = computed(() => {
 
 onMounted(() => {
   watchEffect(() => {
-    events.value = null
     EventService.getEvents(selectedSize.value, page.value)
       .then((response) => {
         events.value = response.data
@@ -62,8 +61,8 @@ onMounted(() => {
     <label for="size">Events per page:</label>
     <select id="size" v-model.number="selectedSize" @change="changeSize">
       <option :value="2">2</option>
+      <option :value="3">3</option>
       <option :value="5">5</option>
-      <option :value="10">10</option>
     </select>
   </div>
 
