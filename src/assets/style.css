@@ -7,5 +7,5 @@ h1 {
 }
 
 .btn-primary {
-  @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-1 px-3 mt-2 rounded shadow;
+  @apply bg-green-600 hover:bg-green-700 text-white font-semibold py-1 px-3 mt-2 rounded shadow;
 }
