@@ -22,5 +22,5 @@ const edit = () => {
 </script>
 <template>
   <p>Edit event here</p>
-  <button @click="edit">Edit</button>
+  <button @click="edit" class="btn-primary">Edit</button>
 </template>

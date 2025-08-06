@@ -10,25 +10,10 @@ defineProps<{ student: Student }>()
 </script>
 
 <template>
-  <div class="student-card">
+  <div
+    class="border border-gray-700 rounded-lg p-4 w-[220px] shadow-md bg-white text-center m-2 transition-transform duration-200 hover:scale-[1.01] hover:shadow-sp"
+  >
     <h2>{{ student.name }} {{ student.surname }}</h2>
     <p>GPA: {{ student.gpa }}</p>
   </div>
 </template>
-
-<style scoped>
-.student-card {
-  border: 1px solid #39495c;
-  border-radius: 8px;
-  padding: 16px;
-  width: 220px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-  background: #fff;
-  text-align: center;
-  margin: 8px;
-}
-.student-card:hover {
-  transform: scale(1.01);
-  box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
-}
-</style>

@@ -18,7 +18,7 @@ onMounted(() => {
     .then((response) => {
       students.value = response.data
     })
-    .catch((err) => {
+    .catch(() => {
       error.value = 'Failed to fetch students.'
     })
 })
@@ -26,26 +26,13 @@ onMounted(() => {
 
 <template>
   <h1>Student List</h1>
-  <div v-if="error">{{ error }}</div>
-  <div v-else class="students">
-    <StudentCard v-for="student in students" :key="student.id" :student="student" />
+  <div v-if="error" class="text-red-600 font-semibold mb-4">{{ error }}</div>
+  <div v-else class="flex flex-wrap gap-4 justify-center">
+    <StudentCard
+      v-for="student in students"
+      :key="student.id"
+      :student="student"
+      class="border border-gray-700 rounded-lg p-4 w-[220px] shadow-md bg-white text-center"
+    />
   </div>
 </template>
-
-<style scoped>
-.students {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-}
-.student-card {
-  border: 1px solid #39495c;
-  border-radius: 8px;
-  padding: 16px;
-  width: 220px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-  background: #fff;
-  text-align: center;
-}
-</style>

@@ -22,5 +22,5 @@ const register = () => {
 </script>
 <template>
   <p>Register event here</p>
-  <button @click="register">Register</button>
+  <button @click="register" class="btn-primary">Register</button>
 </template>
