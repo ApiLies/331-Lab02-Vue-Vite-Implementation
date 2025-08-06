@@ -54,71 +54,46 @@ onMounted(() => {
 </script>
 
 <template>
-  <h1>Events for Good</h1>
+  <h1 class="text-4xl mb-8">Events for Good</h1>
 
-  <!-- new element -->
-  <div class="size-selector">
-    <label for="size">Events per page:</label>
-    <select id="size" v-model.number="selectedSize" @change="changeSize">
+  <!-- Size selector -->
+  <div class="mb-4">
+    <label for="size" class="mr-2 text-base font-medium text-gray-700">Events per page:</label>
+    <select
+      id="size"
+      v-model.number="selectedSize"
+      @change="changeSize"
+      class="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+    >
       <option :value="2">2</option>
       <option :value="3">3</option>
       <option :value="5">5</option>
     </select>
   </div>
 
-  <div class="flex flex-col items-center">
+  <div class="flex flex-col items-center gap-4">
     <EventCard v-for="event in events" :key="event.id" :event="event" />
 
-    <div class="pagination">
+    <div class="flex justify-between w-[290px] text-base">
       <RouterLink
         id="page-prev"
         :to="{ name: 'event-list-view', query: { page: page - 1, size: selectedSize } }"
         rel="prev"
+        class="flex-1 text-left no-underline text-[#2c3e50] font-medium hover:underline"
         v-if="page != 1"
-        >&#60; Prev Page
+      >
+        &#60; Prev Page
       </RouterLink>
 
       <RouterLink
         id="page-next"
         :to="{ name: 'event-list-view', query: { page: page + 1, size: selectedSize } }"
         rel="next"
+        class="flex-1 text-right no-underline text-[#2c3e50] font-medium hover:underline"
         v-if="hasNextPage"
-        >Next Page &#62;</RouterLink
       >
+        Next Page &#62;
+      </RouterLink>
     </div>
   </div>
 </template>
-
-<style scoped>
-.pagination {
-  display: flex;
-  width: 290px;
-}
-
-.pagination a {
-  flex: 1;
-  text-decoration: none;
-  color: #2c3e50;
-}
-
-#page-prev {
-  text-align: left;
-}
-
-#page-next {
-  text-align: right;
-}
-
-.size-selector {
-  margin-bottom: 1rem;
-}
-
-.size-selector label {
-  margin-right: 0.5rem;
-}
-
-.size-selector select {
-  padding: 4px;
-  font-size: 14px;
-}
-</style>
